@@ -1,8 +1,15 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 const axios = require('axios');
+const express = require('express');
 
-// حط هنا رابط الـ Web App اللي أخدناه من جوجل شيت (بين علامتين التنصيص)
+// إعداد خادم ويب بسيط لكي ترضى عنه منصة الاستضافة
+const app = express();
+const PORT = process.env.PORT || 3000;
+app.get('/', (req, res) => res.send('Bot is active and running!'));
+app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+
+// رابط الـ Web App الخاص بجوجل شيت
 const GOOGLE_SCRIPT_URL = 'YOUR_WEB_APP_URL_HERE';
 
 const client = new Client({
